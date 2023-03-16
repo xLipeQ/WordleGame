@@ -81,6 +81,7 @@ private:
 public:
 	bool guessed;
 	bool lastWord = false;
+	bool lastAnimated = false;
 	DIFFICULTY _difficulty;
 	std::string _chosen_word;
 	std::array<RECT, 10 * 5 + 1> _rect;
@@ -638,6 +639,9 @@ public:
 	{		
 		if (_CurFrame >= _MaxFrame)
 		{
+			for (int i = 0; i < windowamount; i++)
+				if (window[i]->GuessedWordIsChose())
+					window[i]->lastAnimated = true;
 			return false;	
 		}
 		int rect_in_row = (_row - 1) * 5 + int(_CurFrame / 55);
@@ -645,6 +649,8 @@ public:
 
 		for (int i = 0; i < windowamount; i++)
 		{
+			if (window[i]->lastAnimated)
+				continue;
 			RECT animated_rect = window[i]->GetRect(rect_in_row);
 
 			COLORREF color_to = window[i]->ColorForRect(rect_in_row);

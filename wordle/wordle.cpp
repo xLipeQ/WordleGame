@@ -492,7 +492,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                     }
                     if (GameRect[i]->IsWordGuessed())
                     {
-                        SetTimer(hWnd, i + 100, 8 * 5 * 55, NULL);
+                        SetTimer(hWnd, i + 100, 9 * 5 * 55, NULL);
                         //GameRect[i]->CreateOverlay(Colors::Green);
                     }
                     if(GameRect[i]->GetRow() == int(curDif) && !GameRect[i]->IsWordGuessed())
