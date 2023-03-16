@@ -539,6 +539,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             #pragma region ChangeDifficulty
             case IDM_EASY:
             {
+                KillAllTimers(hWnd);
                 curDif = EASY;
                 HMENU menu = GetMenu(hWnd);
                 CheckMenuItem(menu, IDM_MEDIUM, MF_UNCHECKED);
@@ -558,6 +559,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             break;
             case IDM_MEDIUM:
             {
+                KillAllTimers(hWnd);
+
                 curDif = MEDIUM;
                 HMENU menu = GetMenu(hWnd);
                 CheckMenuItem(menu, IDM_MEDIUM, MF_CHECKED);
@@ -582,6 +585,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             break;
             case IDM_HARD:
             {
+                KillAllTimers(hWnd);
+
                 curDif = HARD;
                 HMENU menu = GetMenu(hWnd);
                 CheckMenuItem(menu, IDM_MEDIUM, MF_UNCHECKED);
